@@ -9,12 +9,18 @@ import java.io.IOException;
 public class Get1 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-String startString = request.getParameter("start");
-String endString = request.getParameter("end");
+        String startString = request.getParameter("start");
+        String endString = request.getParameter("end");
+        if (startString == null || endString == null) {
+            response.getWriter().println("BRAK");
+        } else {
+            int start = Integer.parseInt(startString);
+            int end = Integer.parseInt(endString);
 
-int start= Integer.parseInt(startString);
-int end = Integer.parseInt((endString));
-
+            for (int i = start; i < end; i++) {
+                response.getWriter().append(i + " ");
+            }
+        }
     }
 
 
